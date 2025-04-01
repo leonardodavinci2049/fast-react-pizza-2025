@@ -1,7 +1,5 @@
 import { useLoaderData } from "react-router-dom";
 import MenuItem from "./MenuItem";
-import { getMenu } from "../../services/apiRestaurant";
-
 // Adicione essa interface no início do arquivo, após as importações
 interface Pizza {
   id: number;
@@ -13,9 +11,9 @@ interface Pizza {
   price: number;
 }
 
-
 const Menu = () => {
   const menu = useLoaderData();
+ // console.log("Menu", menu);
   return (
     <ul className="divide-y divide-stone-200 px-2">
       {menu.map((pizza: Pizza) => (
@@ -23,10 +21,6 @@ const Menu = () => {
       ))}
     </ul>
   );
-}
-export async function loader() {
-  const menu = await getMenu();
-  return menu;
-}
+};
 
 export default Menu;
